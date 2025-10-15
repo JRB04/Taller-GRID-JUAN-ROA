@@ -1,0 +1,81 @@
+/* ===== SECCIÓN FULL BLEED ===== */
+.full_bleed {
+    background: var(--color-white);
+    border-radius: 20px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-smooth);
+}
+
+.full_bleed:hover {
+    box-shadow: var(--shadow-xl);
+}
+
+.full_bleed p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-dark);
+    margin-bottom: 2rem;
+    text-align: justify;
+}
+
+.full_bleed p:first-of-type::first-letter {
+    font-size: 3.5rem;
+    font-weight: 700;
+    float: left;
+    line-height: 1;
+    margin: 0.1rem 0.5rem 0 0;
+    color: var(--color-secondary);
+}
+
+.full_bleed img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin: 2rem 0;
+    box-shadow: var(--shadow-xl);
+    transition: transform var(--transition-smooth);
+}
+
+.full_bleed img:hover {
+    transform: scale(1.02);
+}
+
+/* Efecto parallax en la imagen */
+@media (hover: hover) {
+    .full_bleed img {
+        position: relative;
+    }
+}
+
+/* ===== RESPONSIVE FULL BLEED ===== */
+@media only screen and (max-width: 768px) {
+    .full_bleed {
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .full_bleed p {
+        font-size: 1rem;
+        text-align: left;
+    }
+    
+    .full_bleed p:first-of-type::first-letter {
+        font-size: 2.5rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .full_bleed {
+        padding: 1.5rem;
+        border-radius: 16px;
+    }
+    
+    .full_bleed img {
+        border-radius: 12px;
+        margin: 1.5rem 0;
+    }
+}

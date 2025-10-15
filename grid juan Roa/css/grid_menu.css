@@ -1,0 +1,96 @@
+/* ===== MENÚ LATERAL ===== */
+.menu {
+    grid-area: menu;
+    background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-dark) 100%);
+    padding: 2rem 0;
+    box-shadow: var(--shadow-lg);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 1rem;
+}
+
+.menu li {
+    margin-bottom: 0.5rem;
+}
+
+.menu button {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 12px;
+    color: var(--color-white);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-smooth);
+    text-align: left;
+    backdrop-filter: blur(10px);
+}
+
+.menu button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+    box-shadow: var(--shadow-md);
+}
+
+.menu button:active {
+    transform: translateX(3px) scale(0.98);
+}
+
+/* Efecto de botón activo */
+.menu button.active {
+    background: rgba(255, 255, 255, 0.25);
+    border-left: 4px solid var(--color-accent);
+}
+
+/* ===== RESPONSIVE MENÚ ===== */
+@media only screen and (max-width: 768px) {
+    .menu {
+        position: relative;
+        height: auto;
+        padding: 1rem 0;
+    }
+    
+    .menu ul {
+        display: flex;
+        gap: 0.5rem;
+        overflow-x: auto;
+        padding: 0 1rem;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+    }
+    
+    .menu ul::-webkit-scrollbar {
+        height: 6px;
+    }
+    
+    .menu ul::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    .menu ul::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 3px;
+    }
+    
+    .menu li {
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+    
+    .menu button {
+        white-space: nowrap;
+        padding: 0.75rem 1.5rem;
+    }
+    
+    .menu button:hover {
+        transform: translateY(-2px);
+    }
+}

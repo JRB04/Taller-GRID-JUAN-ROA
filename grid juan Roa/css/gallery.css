@@ -1,0 +1,161 @@
+/* ===== GALERÍA DE IMÁGENES ===== */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem 0;
+    margin: 2rem 0;
+}
+
+.gallery figure {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    aspect-ratio: 1;
+    cursor: pointer;
+    transition: all var(--transition-smooth);
+}
+
+.gallery figure:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-4px);
+}
+
+/* Overlay con gradiente */
+.gallery figure::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.6) 100%);
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
+    pointer-events: none;
+}
+
+.gallery figure:hover::after {
+    opacity: 1;
+}
+
+/* Imágenes de la galería */
+.gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+}
+
+.gallery figure:hover img {
+    transform: scale(1.1) rotate(2deg);
+}
+
+
+/* Bordes que me gustaron */
+.gallery figure {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.gallery figure:nth-child(6n + 1) {
+    border-color: rgba(231, 76, 60, 0.4);
+}
+
+.gallery figure:nth-child(6n + 2) {
+    border-color: rgba(52, 152, 219, 0.4);
+}
+
+.gallery figure:nth-child(6n + 3) {
+    border-color: rgba(46, 204, 113, 0.4);
+}
+
+.gallery figure:nth-child(6n + 4) {
+    border-color: rgba(155, 89, 182, 0.4);
+}
+
+.gallery figure:nth-child(6n + 5) {
+    border-color: rgba(243, 156, 18, 0.4);
+}
+
+.gallery figure:nth-child(6n + 6) {
+    border-color: rgba(230, 126, 34, 0.4);
+}
+
+/* Efecto de número/contador */
+.gallery figure::before {
+    content: attr(data-index);
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--color-dark);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all var(--transition-smooth);
+    z-index: 2;
+    box-shadow: var(--shadow-md);
+}
+
+.gallery figure:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ===== RESPONSIVE GALERÍA ===== */
+@media only screen and (max-width: 1024px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    
+    .gallery figure:first-child {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+        padding: 1.5rem 0;
+    }
+    
+    .gallery figure:nth-child(5),
+    .gallery figure:nth-child(10),
+    .gallery figure:nth-child(15) {
+        grid-column: span 1;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+    
+    .gallery figure {
+        border-radius: 12px;
+    }
+    
+    .gallery figure::before {
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+}
+
+/* Modo oscuro para galería (opcional) */
+@media (prefers-color-scheme: dark) {
+    .gallery figure::after {
+        background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.8) 100%);
+    }
+}
